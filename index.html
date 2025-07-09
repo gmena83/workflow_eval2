@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluador de Workflow de IA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="flex items-center gap-16">
+                <div class="header__logo">
+                    <h1 class="header__title">🔍 Evaluador de Workflow de IA</h1>
+                    <p class="header__subtitle">Analiza y optimiza tus flujos de trabajo automatizados</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Upload Section -->
+            <section class="upload-section" id="upload-section">
+                <div class="card">
+                    <div class="card__body">
+                        <h2>Cargar Workflow</h2>
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-area__content">
+                                <div class="upload-icon">📁</div>
+                                <h3>Arrastra tu archivo JSON aquí</h3>
+                                <p>o <button class="btn btn--outline" id="file-select-btn">selecciona un archivo</button></p>
+                                <input type="file" id="file-input" accept=".json" style="display: none;">
+                            </div>
+                        </div>
+                        <div class="upload-actions">
+                            <button class="btn btn--secondary" id="load-sample-btn">Cargar ejemplo de demostración</button>
+                        </div>
+                        <div class="upload-status" id="upload-status" style="display: none;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="results-section" style="display: none;">
+                <!-- Navigation Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="resumen">Resumen Ejecutivo</button>
+                    <button class="tab-btn" data-tab="nodos">Evaluación por Nodos</button>
+                    <button class="tab-btn" data-tab="errores">Análisis de Errores</button>
+                    <button class="tab-btn" data-tab="optimizaciones">Optimizaciones</button>
+                    <button class="tab-btn" data-tab="checklist">Checklist</button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content">
+                    <!-- Resumen Ejecutivo -->
+                    <div class="tab-panel active" id="resumen">
+                        <div class="summary-grid">
+                            <div class="card metric-card">
+                                <div class="card__body">
+                                    <h3>Score Global</h3>
+                                    <div class="metric-value" id="global-score">--</div>
+                                    <div class="metric-label" id="global-status">--</div>
+                                </div>
+                            </div>
+                            <div class="card metric-card">
+                                <div class="card__body">
+                                    <h3>Costo por Ciclo</h3>
+                                    <div class="metric-value" id="cycle-cost">$--</div>
+                                    <div class="metric-label">Estimado</div>
+                                </div>
+                            </div>
+                            <div class="card metric-card">
+                                <div class="card__body">
+                                    <h3>Tiempo Total</h3>
+                                    <div class="metric-value" id="total-time">-- min</div>
+                                    <div class="metric-label">Por ejecución</div>
+                                </div>
+                            </div>
+                            <div class="card metric-card">
+                                <div class="card__body">
+                                    <h3>Errores Críticos</h3>
+                                    <div class="metric-value critical" id="critical-errors">--</div>
+                                    <div class="metric-label">Encontrados</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card__body">
+                                <h3>Distribución de Scores por Nodo</h3>
+                                <div class="score-chart" id="score-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evaluación por Nodos -->
+                    <div class="tab-panel" id="nodos">
+                        <div class="node-evaluation" id="node-evaluation"></div>
+                    </div>
+
+                    <!-- Análisis de Errores -->
+                    <div class="tab-panel" id="errores">
+                        <div class="error-analysis" id="error-analysis"></div>
+                    </div>
+
+                    <!-- Optimizaciones -->
+                    <div class="tab-panel" id="optimizaciones">
+                        <div class="optimization-panel" id="optimization-panel"></div>
+                    </div>
+
+                    <!-- Checklist -->
+                    <div class="tab-panel" id="checklist">
+                        <div class="checklist-container" id="checklist-container"></div>
+                    </div>
+                </div>
+
+                <!-- Export Actions -->
+                <div class="export-section">
+                    <button class="btn btn--primary" id="export-report-btn">Descargar Reporte</button>
+                    <button class="btn btn--outline" id="new-analysis-btn">Nuevo Análisis</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
